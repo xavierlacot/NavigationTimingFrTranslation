@@ -587,9 +587,9 @@ l'évènement load n'a pas été émis.</p>
 
 <h4>Attribut <code><dfn id="nt-load-end">loadEventEnd</dfn></code></h4>
 
-<p>Cet attribut doit retourner the time when the load event of the current
-document is completed. It must return zero when the load event is not fired
-or is not completed.</p>
+<p>Cet attribut doit retourner l'heure lorsque l'évènement
+load du document courant est terminé. Il doit retourner zéro tant que
+l'évènement load n'a pas été émis ou n'est pas terminé.</p>
 
 <h3 id="sec-navigation-info-interface"><span class="secno">4.3 </span>L'interface
 <code><a href="#nt-navigation-info-interface">PerformanceNavigation</a></code></h3>
@@ -604,41 +604,41 @@ or is not completed.</p>
 
 <h4>Attribut <code><dfn id="nt-navigation-info-type">type</dfn></code></h4>
 
-<p>Cet attribut doit retourner the type of the last non-redirect <a
-href="http://dev.w3.org/html5/spec/history.html#navigate">navigation</a>
-in the current browsing context. It must have one of the following <a
-href="#nt-navigation-info-type">navigation type</a> values. </p>
+<p>Cet attribut doit retourner le type de la dernière action de <a
+href="http://dev.w3.org/html5/spec/history.html#navigate">navigation</a> qui n'est pas une redirection,
+dans le contexte courant de navigation. Il doit avoir une des valeurs de <a
+href="#nt-navigation-info-type">type de navigation</a> suivantes. </p>
 <dl>
   <dt><dfn id="nt-navigation-info-type-navigate">TYPE_NAVIGATE</dfn>:
-    Navigation started by clicking on a link, or entering the URL in the user
-    agent's address bar, or form submission, or initializing through a script operation other than
-    the ones used by <a href="#nt-navigation-info-type-navigate">TYPE_RELOAD</a>
-    and <a href="#nt-navigation-info-type-back-forward">TYPE_BACK_FORWARD</a> as listed below.
-  <dt><dfn id="nt-navigation-info-type-reload">TYPE_RELOAD</dfn>: Navigation through
-    the reload operation or the
-    <a href="http://dev.w3.org/html5/spec/Overview.html#dom-location-reload">location.reload()</a>
-    method.</dt>
+    La navigation a commencé en cliquant sur un lien, ou en entrant l'URL dans la barre
+    d'addresses de l'agent utilisateur, ou en soumettant un formulaire, ou elle a été initiée par une opération scriptée autre que
+    celles utilisées par <a href="#nt-navigation-info-type-navigate">TYPE_RELOAD</a>
+    et <a href="#nt-navigation-info-type-back-forward">TYPE_BACK_FORWARD</a> comme indiqué ci-dessous.
+  <dt><dfn id="nt-navigation-info-type-reload">TYPE_RELOAD</dfn>: Navigation par le biais
+    d'une opération de rechargement ou par la méthode
+    <a href="http://dev.w3.org/html5/spec/Overview.html#dom-location-reload">location.reload()</a>.</dt>
   <dt><dfn id="nt-navigation-info-type-back-forward">TYPE_BACK_FORWARD</dfn>: Navigation
-  through a <a href="http://dev.w3.org/html5/spec/Overview.html#traverse-the-history">history traversal</a> operation.</dt>
-  <dt><dfn id="nt-navigation-info-type-reserved">TYPE_RESERVED</dfn>: Any navigation
-  types not defined by values above.</dt>
+  par le biais d'une opération de <a href="http://dev.w3.org/html5/spec/Overview.html#traverse-the-history">traversée d'historique</a>.</dt>
+  <dt><dfn id="nt-navigation-info-type-reserved">TYPE_RESERVED</dfn>: Tous les autres types de navigation
+  non définis par les valeurs précédentes.</dt>
 </dl>
 
 <div class="note">
-<p>Client-side redirects, such as those using <a href="http://dev.w3.org/html5/spec/semantics.html#attr-meta-http-equiv-refresh">the Refresh pragma directive</a>,
-are not considered HTTP redirects <a href="http://dev.w3.org/html5/spec/fetching-resources.html#concept-http-equivalent-codes">or equivalent</a> by this spec.
-In those cases, the <a href="#nt-navigation-info-type">type</a> attribute should return appropriate value,
-such as <a href="#nt-navigation-info-type-navigate">TYPE_RELOAD</a> if reloading the current page, or
-<a href="#nt-navigation-info-type-navigate">TYPE_NAVIGATE</a> if navigating to a new URL.</p>
+<p>Les redirections côté client, comme celles utilisant <a href="http://dev.w3.org/html5/spec/semantics.html#attr-meta-http-equiv-refresh">la directive pragma Refresh</a>,
+ne sont pas considérées comme des redirections HTTP <a href="http://dev.w3.org/html5/spec/fetching-resources.html#concept-http-equivalent-codes">ou un équivalent</a> par cette spécification.
+Dans ces cas, l'attribut <a href="#nt-navigation-info-type">type</a> devrait retourner la valeur appropriée,
+comme <a href="#nt-navigation-info-type-navigate">TYPE_RELOAD</a> si la page courante est rechargée, ou
+<a href="#nt-navigation-info-type-navigate">TYPE_NAVIGATE</a> si la navigation est effectuée vers une autre URL.</p>
 </div>
 
 <h4>Attribut <code><dfn id="nt-navigation-info-redirect-count">redirectCount</dfn></code></h4>
 
-<p>Cet attribut doit retourner the number of redirects since the last
-non-redirect navigation under the current browsing context. If there is no
-redirect or there is any redirect that is not from the
+<p>Cet attribut doit retourner le nombre de redirections depuis la dernière
+action de navigation dans le contexte de navigation courant et qui ne soit
+pas une redirection. S'il n'y a pas de redirection, ou s'il n'y a aucune redirection
+qui n'est pas de la
 <a href="http://dev.w3.org/html5/spec/origin-0.html#origin">
-same origin</a> as the destination document, this attribute must return zero. </p>
+même origine</a> que le document de destination, cet attribut doit retourner zéro. </p>
 
 <h3 id="sec-window.performance-attribute"><span class="secno">4.4 </span> L'attribut
 <code><a href="#nt-window-performance">window.performance</a> </code></h3>
@@ -653,18 +653,18 @@ interface Window {
 };</pre>
 
 <p>
-The <a href="#nt-window-performance">window.performance</a> attribute provides
-a hosting area for performance related attributes. Specifically, the <a
-href="#window-performance-timing">window.performance.timing</a> attribute
-represents the timing information related to the browsing contexts since the
-last non-redirect navigation. Each browsing context must have a unique <a
-href="#window-performance-timing">window.performance.timing</a> attribute.
-PerformanceTiming objects in the timing attribute may be sorted by the
-chronological order of the corresponding browsing context.
+L'attribut <a href="#nt-window-performance">window.performance</a> fournit
+un espace de stockage pour les attributs liés à la performance. Plus précisément, l'attribut <a
+href="#window-performance-timing">window.performance.timing</a>
+représente les informations de mesure de temps liées aux contextes de navigation
+depuis la dernière action de navigation qui ne soit pas une redirection. Chaque contexte de navigation doit avoir un unique attibut <a
+href="#window-performance-timing">window.performance.timing</a>.
+Les objets PerformanceTiming dans l'attribut timing peuvent être triés selon
+l'ordre chronologique du contexte de navigation correspondant.
 </p>
 
 <div class="example">
-<p>Following is an example of how to use the interface in an HTML page: </p>
+<p>Voici un exemple indiquant comment l'interface au sein d'une page HTML : </p>
 <pre>var t = performance.timing;
 var n = performance.navigation;
 if (t.loadEventEnd &gt; 0) {
@@ -675,56 +675,55 @@ if (t.loadEventEnd &gt; 0) {
 }</pre>
 </div>
 
-<h2 id="process"><span class="secno">5 </span>Process</h2>
+<h2 id="process"><span class="secno">5 </span>Traitement</h2>
 
-<h3 id="processing-model"><span class="secno">5.1 </span>Processing Model</h3>
+<h3 id="processing-model"><span class="secno">5.1 </span>Modèle de traitement</h3>
 
-<p class="note">All the attributes in window.performance.timing and
-window.performance.navigation should not be written to until <a
-href="http://dev.w3.org/html5/spec/history.html#create-a-document-object">the
-Window object of the current document is created</a>, even though their
-attributes are referred to in the following steps to facilitate
-description.</p>
+<p class="note">Tous les attributs de window.performance.timing et
+window.performance.navigation ne devraient pas être écrits avant que <a
+href="http://dev.w3.org/html5/spec/history.html#create-a-document-object">l'objet
+Window du document courant ne soit créé</a>, même s'il est fait référence à
+leurs attributs dans les étapes suivantes, afin de faciliter la description.</p>
 
-<p class="note">User agents may provide users the option of disabling
-the window.performance.timing and window.performance.navigation interfaces.
-When these interfaces are disabled, both window.performance.timing and
-window.performance.navigation must return a null value.</p>
+<p class="note">Les agents utilisateurs peuvent permettre aux utilisateurs la possibilité de désactiver
+les interfaces window.performance.timing et window.performance.navigation.
+Lorsque ces interfaces sont désactivées, window.performance.timing et
+window.performance.navigation doivent retourner une valeur nulle.</p>
 
 <div class="example">
 <div class="exampleHeader">
-Example</div>
-<p>A user agent may maintain instances of the PerformanceTiming and
-PerformanceNavigation interfaces until the Window object associated with the current
-document is created, when window.performance.timing and
-window.performance.navigation are replaced with these instances.</p>
+Exemple</div>
+<p>Un agent utilisateur peut maintenir des instances des interfaces PerformanceTiming et
+PerformanceNavigation jusqu'à ce que l'objet Window associé au document courant soit
+créé, moment auquel window.performance.timing et
+window.performance.navigation sont remplacés par ces instances.</p>
 </div>
 
 <div class="example">
 <div class="exampleHeader">Illustration</div>
-<p>This section is non-normative.</p>
-<p>The following graph illustrates the timing attributes defined by the
-<a href="#nt-navigation-timing-interface">PerformanceTiming</a> interface and the
-<a href="#nt-navigation-info-interface">PerformanceNavigation</a> interface
-with or without redirect, respectively. Attributes underlined may not be
-available in navigation involving documents from different
-<a href="http://dev.w3.org/html5/spec/origin-0.html#origin">origins</a>. User
-agents may perform internal processing in between timings, which allow for
-non-normative intervals between timings.</p>
-<p><img width="85%" src="timing-overview.png" alt='Timing attributes'></p>
+<p>Cette section est non-normative.</p>
+<p>Le graphe suivant illustrate les attributs de mesure de durée définis par l'interface
+<a href="#nt-navigation-timing-interface">PerformanceTiming</a> et l'interface
+<a href="#nt-navigation-info-interface">PerformanceNavigation</a>, respectivement
+avec ou sans redirection. Les attributs soulignés peuvent ne pas être disponibles
+lors d'une navigation impliquant des documents d'<a
+href="http://dev.w3.org/html5/spec/origin-0.html#origin">origines</a> différentes. Les
+agents utilisateurts peuvent effectuer des traitements internes entre des mesures,
+ce qui permet des intervalles non-normatifs entre mes mesures de durée.</p>
+<p><img width="85%" src="timing-overview.png" alt='Attributs de mesure de durée'></p>
 </div>
 
 <ol>
-  <li>If the navigation is aborted for any of the following reasons, abort
-    these steps without changing the attributes in window.performance.timing
-    and window.performance.navigation.
+  <li>Si la navigation est annulée pour une quelconque des raisons suivantes, annulez
+    ces étapes sans modifier les attributs de window.performance.timing
+    et window.performance.navigation.
     <ol style="list-style-type:lower-alpha;">
-      <li>The navigation is aborted due to the
-        <a href="http://dev.w3.org/html5/spec/the-iframe-element.html#sandboxed-navigation-browsing-context-flag">sandboxed
-        navigation browsing context flag</a> or the
-        <a href="http://dev.w3.org/html5/spec/the-iframe-element.html#sandboxed-top-level-navigation-browsing-context-flag">sandboxed
-        top-level navigation browsing context flag</a>, or a preexist attempt
-        to navigate the <a href="http://dev.w3.org/html5/spec/browsers.html#browsing-context">browsing context</a>.</li>
+      <li>La navigation est annulée en raison du
+        <a href="http://dev.w3.org/html5/spec/the-iframe-element.html#sandboxed-navigation-browsing-context-flag">marqueur de
+        contexte de navigation cloisonnée</a> ou du
+        <a href="http://dev.w3.org/html5/spec/the-iframe-element.html#sandboxed-top-level-navigation-browsing-context-flag">marqueur de
+        contexte de navigation de haut niveau cloisonnée</a>, ou une tentative antérieure
+        de naviguer <a href="http://dev.w3.org/html5/spec/browsers.html#browsing-context">dans le contexte de navigation</a>.</li>
       <li>The navigation is caused by <a
         href="http://dev.w3.org/html5/spec/history.html#navigate-fragid-step"><em>fragment
         identifiers</em></a> within the page.</li>
