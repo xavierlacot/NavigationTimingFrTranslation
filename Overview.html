@@ -169,7 +169,7 @@ du Web.</p>
   <li><a href="#privacy"><span class="secno">6 </span>Données privées</a>
     <ol class="toc">
       <li><a href="#info_disclosure"><span class="secno">6.1 </span>Divulgation d'informations</a></li>
-      <li><a href="#cross-directory"><span class="secno">6.2 </span>Accès au travers de dossiers</a></li>
+      <li><a href="#cross-directory"><span class="secno">6.2 </span>Accès inter-dossiers</a></li>
     </ol>
   </li>
   <li><a href="#security"><span class="secno">7 </span>Sécurité</a>
@@ -945,90 +945,90 @@ par exemple pour des besoins expérimentaux, les fournisseurs doivent utiliser l
 <p>Cette section n'est pas normative.</p>
 
 <h3 id="info_disclosure"><span class="secno">6.1 </span>Divulgation d'informations</h3>
-<p>There is the potential for disclosing an end-user's browsing and activity history by using
-carefully crafted timing attacks. For instance, the unloading time reveals how long the previous
-page takes to execute its unload handler, which could be used to infer the user's login status.
-These attacks have been mitigated by enforcing the same
-<a href="http://tools.ietf.org/html/rfc6454">origin</a> policy when
-timing information involving the previous navigation is accessed.</p>
+<p>Il existe un potentiel pour la divulgation de l'historique de navigation et d'activité de l'utilisateur final
+en utilisant des attaques temporelles conçues avec soin. Par exemple, le temps de déchargement révèle
+combien de temps il est nécessaire à la page précédente pour exécuter son gestionnaire de déchargement,
+ce qui pourrait être utilisée pour déduire l'état de connexion de l'utilisateur.
+Ces attaques ont été atténués par l'application de la règle de même
+<a href="http://tools.ietf.org/html/rfc6454">origine</a> lorsqu'on accède
+à des informations de mesure de durée impliquant la dernière navigation.</p>
 
-<p>The <a href="http://www.w3.org/TR/html5/browsers.html#relaxing-the-same-origin-restriction">
-relaxed same origin policy</a> doesn't provide sufficient protection against unauthorized visits
-across documents. In shared hosting, an untrusted third party is able to host an HTTP server at the same
-IP address but on a different port.</p>
+<p>La <a href="http://www.w3.org/TR/html5/browsers.html#relaxing-the-same-origin-restriction">politique de même origine détendue</a>
+n'offre pas une protection suffisante contre les visites non autorisées entre les documents.
+En hébergement mutualisé, une tierce partie non approuvée a la possibilité
+d'héberger un serveur HTTP à la même adresse IP, mais sur un autre port.</p>
 
-<h3 id="cross-directory"><span class="secno">6.2 </span>Cross-directory access</h3>
-<p>Different pages sharing one host name, for example contents from different authors hosted
-on sites with user generated content are considered from the same origin because there is no
-feature to restrict the access by pathname. Navigating between these pages allows a latter page
-to access timing information of the previous one, such as timing regarding redirection and unload event.</p>
+<h3 id="cross-directory"><span class="secno">6.2 </span>Accès inter-dossiers</h3>
+<p>Different pages qui partagent un nom d'hôte, par exemple des contenus de différents auteurs hébergés
+sur des sites avec du contenu généré par l'utilisateur, sont considérées comme ayant la même origine,
+parce qu'il n'y a aucune fonctionnalité pour restreindre l'accès par chemin. Naviguer entre ces pages permet à une page donnée d'accéder aux informations de mesure de durée de la précédente, comme par exemple la mesure de durée de redirection et de l'évènement unload.</p>
 
-<h2 id="security"><span class="secno">7 </span>Security</h2>
-<p>This section is non-normative.</p>
+<h2 id="security"><span class="secno">7 </span>Sécurité</h2>
+<p>Cette section n'est pas normative.</p>
 
-<h3 id="authentication"><span class="secno">7.1 </span>Detecting proxy servers</h3>
-<p>In case a proxy is deployed between the user agent and the web server, the time interval
-between the <a href="#dom-performancetiming-connectstart">connectStart</a> and the
-<a href="#dom-performancetiming-connectend">connectEnd</a> attributes indicates the delay between the user agent
-and the proxy instead of the web server. With that, web server can potentially infer the
-existence of the proxy. For SOCKS proxy, this time interval includes the proxy authentication
-time and time the proxy takes to connect to the web server, which obfuscate the proxy detection.
-In case of an HTTP proxy, the user agent might not have any knowledge about the proxy server at
-all so it's not always feasible to mitigate this attack.</p>
+<h3 id="authentication"><span class="secno">7.1 </span>Détection de serveurs proxy</h3>
+<p>Dans le cas où un proxy est déployé entre l'agent utilisateur et le serveur Web, la durée de temps entre
+les attributs <a href="#dom-performancetiming-connectstart">connectStart</a> et
+<a href="#dom-performancetiming-connectend">connectEnd</a> indique le délai entre l'agent utilisateur
+et le proxy au lieu du serveur Web. Ainsi, le serveur Web peut potentiellement détecter
+l'existence du proxy. Pour les proxys SOCKS, cet intervalle de temps inclut la durée d'authentification au proxy
+et la durée que le proxy met pour se connecter au serveur Web, ce qui complique la détection du proxy.
+Dans le cas d'un proxy HTTP, l'agent utilisateur pourrait n'avoir aucune connaissance du serveur proxy,
+et donc il est toujours possible d'atténuer cette attaque.</p>
 
-<h3 id="readonly"><span class="secno">7.2 </span>Tampering by replacing timing objects</h3>
-<p>The window.performance object is replaceable to avoid conflicts with existing pages using the
-same object. By doing that, it is possible for third-party to replace the object and scripts
-relying on the interface described in this work would break.</p>
+<h3 id="readonly"><span class="secno">7.2 </span>Falsification en remplaçant les objets de mesure de durée</h3>
+<p>L'objet window.performance est remplaçable afin d'éviter les conflits avec les pages existantes qui utilisent
+le même objet. En faisant cela, il est possible pour une tierce partie de remplacer l'objet, et les scripts
+qui s'appuient sur l'interface décrite dans ce document pourraient être cassées.</p>
 
-<h2 id="references"><span class="secno">8 </span>References</h2>
+<h2 id="references"><span class="secno">8 </span>Références</h2>
 
-<h3 id="normative-references"><span class="secno">8.1 </span>Normative References</h3>
+<h3 id="normative-references"><span class="secno">8.1 </span>Références Normatives</h3>
 
 <dl>
 <dt><a id='rfc2119'>[IETF RFC 2119]</a></dt>
 <dd>
- <cite><a href='http://www.ietf.org/rfc/rfc2119.txt'>Key words for use in RFCs to Indicate Requirement Levels</a></cite>, Scott Bradner, Author. Internet Engineering Task Force, March 1997. Available at <a href='http://www.ietf.org/rfc/rfc2119.txt'>http://www.ietf.org/rfc/rfc2119.txt</a>.
+ <cite><a href='http://www.ietf.org/rfc/rfc2119.txt'>Key words for use in RFCs to Indicate Requirement Levels</a></cite>, Scott Bradner, Auteur. Internet Engineering Task Force, Mars 1997. Disponible à <a href='http://www.ietf.org/rfc/rfc2119.txt'>http://www.ietf.org/rfc/rfc2119.txt</a>.
 </dd>
 <dt><a id='rfc2616'>[IETF RFC 2616]</a></dt>
 <dd>
- <cite><a href='http://www.ietf.org/rfc/rfc2616.txt'>Hypertext Transfer Protocol -- HTTP/1.1</a></cite>, R. Fielding et al., Authors. Internet Engineering Task Force, June 1999. Available at <a href='http://www.ietf.org/rfc/rfc2616.txt'>http://www.ietf.org/rfc/rfc2616.txt</a>.
+ <cite><a href='http://www.ietf.org/rfc/rfc2616.txt'>Hypertext Transfer Protocol -- HTTP/1.1</a></cite>, R. Fielding et al., Auteurs. Internet Engineering Task Force, Juin 1999. Disponible à <a href='http://www.ietf.org/rfc/rfc2616.txt'>http://www.ietf.org/rfc/rfc2616.txt</a>.
 </dd>
 <dt>[<a id='rfc6454'>IETF RFC 6454</a>]</dt>
 <dd>
- <cite><a href='http://tools.ietf.org/html/rfc6454'>The Web Origin Concept</a></cite>, Adam Barth, Author.  Internet Engineering Task Force, December 2011. Available at <a href='http://www.ietf.org/rfc/rfc6454.txt'>http://www.ietf.org/rfc/rfc6454.txt</a>.
+ <cite><a href='http://tools.ietf.org/html/rfc6454'>The Web Origin Concept</a></cite>, Adam Barth, Auteur.  Internet Engineering Task Force, Décembre 2011. Disponible à <a href='http://www.ietf.org/rfc/rfc6454.txt'>http://www.ietf.org/rfc/rfc6454.txt</a>.
 </dd>
 <dt>[<a id="ECMA262">ECMA-262</a>]</dt><dd>
 	<cite><a href='http://www.ecma-international.org/publications/standards/Ecma-262.htm'>ECMAScript Language Specification</a></cite>, 5.1
 	Edition. ECMA International, Standard
-	ECMA-262, June 2011. This version of the ECMAScript
-	Language is available from <a href='http://www.ecma-international.org/publications/standards/Ecma-262.htm'>http://www.ecma-international.org/publications/standards/Ecma-262.htm</a>.
+	ECMA-262, Juin 2011. Cette version du Langage ECMAScript
+	est disponible par le biais de <a href='http://www.ecma-international.org/publications/standards/Ecma-262.htm'>http://www.ecma-international.org/publications/standards/Ecma-262.htm</a>.
 <dt>[<a id="HTML5">HTML5</a>]</dt>
-<dd><cite><a href='http://www.w3.org/TR/html5/'>HTML5</a></cite>, Robin Berjon et al., Editors. World Wide Web Consortium, December 2012. This version of the HTML5 is available from <a href='http://www.w3.org/TR/html5/'>http://www.w3.org/TR/html5/</a>. The <a href='http://www.w3.org/html/wg/drafts/html/CR/'>latest editor's draft</a> of HTML5 is available at http://www.w3.org/html/wg/drafts/html/CR/.</dd>
+<dd><cite><a href='http://www.w3.org/TR/html5/'>HTML5</a></cite>, Robin Berjon et al., Éditeurs. World Wide Web Consortium, Décembre 2012. Cette version de HTML5 est disponible par le biais de <a href='http://www.w3.org/TR/html5/'>http://www.w3.org/TR/html5/</a>. Le <a href='http://www.w3.org/html/wg/drafts/html/CR/'>dernier document de travail de l'éditeur</a> de HTML5 est disponible à http://www.w3.org/html/wg/drafts/html/CR/.</dd>
    <dt>[<a id="WebIDL">Web IDL</a>]</dt>
-   <dd><cite><a href='http://www.w3.org/TR/2012/CR-WebIDL-20120419/'>Web IDL</a></cite>, Cameron McCormack, Editor. World Wide Web Consortium, April 2012. This version of the Web IDL specification is available from http://www.w3.org/TR/2012/CR-WebIDL-20120419/. The <a href='http://www.w3.org/TR/WebIDL/'>latest version of Web IDL</a> is available at http://www.w3.org/TR/WebIDL/.</dd>
+   <dd><cite><a href='http://www.w3.org/TR/2012/CR-WebIDL-20120419/'>Web IDL</a></cite>, Cameron McCormack, Éditeur. World Wide Web Consortium, Avril 2012. Cette version de la spécification Web IDL specification est disponible par le biais de http://www.w3.org/TR/2012/CR-WebIDL-20120419/. La <a href='http://www.w3.org/TR/WebIDL/'>dernière version de Web IDL</a> est disponible à http://www.w3.org/TR/WebIDL/.</dd>
 </dl>
 
-<h3 id="informative-references"><span class="secno">8.2 </span>Informative References</h3>
+<h3 id="informative-references"><span class="secno">8.2 </span>Références Informatives</h3>
 
 <dl>
 <dt>[<a id="JSMeasure">JSMEASURE</a>]</dt>
-<dd><cite><a href='http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.7329&amp;rep=rep1&amp;type=pdf'>Measuring Client-Perceived Response Times on the WWW</a></cite>, R. Rajamony and M. Elnozahy, The Proceedings of the 3rd USENIX Symposium on Internet Technologies and Systems (USITS), March 2001.</dd>
+<dd><cite><a href='http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.7329&amp;rep=rep1&amp;type=pdf'>Measuring Client-Perceived Response Times on the WWW</a></cite>, R. Rajamony et M. Elnozahy, The Proceedings of the 3rd USENIX Symposium on Internet Technologies and Systems (USITS), Mars 2001.</dd>
 
 <dt>[<a id="NavigationTiming2">Navigation Timing 2</a>]</dt>
 
 <dd><cite><a href='http://w3c-test.org/webperf/specs/NavigationTiming2/'>Navigation
-Timing 2</a></cite>, Jatinder Mann, Arvind Jain, Editors. World Wide
-Web Consortium, <em>unpublished</em>.</dd>
+Timing 2</a></cite>, Jatinder Mann, Arvind Jain, Éditeurs. World Wide
+Web Consortium, <em>non publié</em>.</dd>
 </dl>
 
-<h2 class="no-num" id="acknowledgements">Acknowledgements</h2>
+<h2 class="no-num" id="acknowledgements">Remerciements</h2>
 
-<p>I would like to offer my sincere thanks to all the people that I have been
-in touch with regarding this draft, including Anderson Quach, Alex Russell,
+<p>Je voudrais présenter mes sincères remerciements à toutes les personnes avec lesquelles j'ai
+été en contact au sujet de ce document de travail, ce qui inclut Anderson Quach, Alex Russell,
 Alois Reitbauer, Annie Sullivan, Christian Biesinger, Darin Fisher, Eric
 Lawrence, James Simonsen, Jatinder Mann, Jason Sobel, Jason Weber, Jonas Sicking, Kyle Scholz,
 Lenny Rachitsky, Nic Jansma, Richard Rabbat, Sergey Novikov, Sigbjørn Vik,
-Steve Souders, Tony Gentilcore for their reviews and feedback.</p>
+Steve Souders, Tony Gentilcore pour leurs revues et leurs retours.</p>
 </body>
 </html>
