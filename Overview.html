@@ -906,45 +906,45 @@ window.performance.timing et window.performance.navigation.
 </p>
 
 <h3 id="mono-clock"><span class="secno">5.3 </span>Horloge Monotone</h3>
-<p>The value of the timing attributes must monotonically increase to ensure timing attributes are not
-skewed by adjustments to the system clock during the navigation. The difference between any two chronologically
-recorded timing attributes must never be negative. For all navigations, including subdocument navigations,
-the user agent must record the system clock at the beginning of the root document navigation
-and define subsequent timing attributes in terms of a monotonic clock measuring time elapsed
-from the beginning of the navigation.
+<p>La valeur des attributs de mesure de durée doit augmenter de manière monotone afin de garantir que les attributs de mesure de durée ne sont pas faussés
+par des ajustements à l'horloge du système pendant la navigation. La différence entre n'importe lesquels de deux attributs de mesure de durée enregistrés chronologiquement
+ne doit jamais être négative. Pour toutes les navigations, y compris les navigations au sein d'un même document,
+l'agent utilisateur doit enregistrer l'horloge du système au début de la navugation du document racine,
+et définir les attributs de mesure de durée subséquents selon les termes d'une horloge monotone mesurant la durée écoulée
+depuis le début de la navigation.
 </p>
 
-<h3 id="vendor-prefixes"><span class="secno">5.4 </span>Vendor Prefixes</h3>
-<p>Vendor-specific proprietary user agent extensions are discouraged. If such extensions are needed,
-e.g., for experimental purposes, vendors must use the following extension mechanisms:</p>
+<h3 id="vendor-prefixes"><span class="secno">5.4 </span>Préfixes de fournisseurs</h3>
+<p>Les extensions d'agent utilisateur propriétaires, spécifiques au fournisseurs, sont découragées. Si de telles extensions sont nécessaires,
+par exemple pour des besoins expérimentaux, les fournisseurs doivent utiliser les mécanismes d'extension suivants :</p>
 
 <ul>
-<li>If the extension to be added is an navigation type, the new type must
+<li>Si l'extension à ajouter est de type navigation, le nouveau type doit
   <ul>
-  <li>follow the naming convention: TYPE_[VENDORPREFIX]_[TYPE], where [VENDORPREFIX] is a name
-  that identifies the vendor.</li>
-  <li>have a value in the range of 100 to 200.</li>
+  <li>suivre la convention de nommage suivante : TYPE_[VENDORPREFIX]_[TYPE], où [VENDORPREFIX] est un nom
+  qui identifie le fournisseur.</li>
+  <li>avoir une valeur dans la série 100 à 200.</li>
   </ul>
 </li>
-<li>If the extension is a new timing attribute, it must
+<li>Si l'extension est un nouvel attribut de mesure de durée, il doit
   <ul>
-  <li>follow the naming convention: [vendorPrefix]TimeAttribute, where [vendorPrefix] identifies
-  the vendor name and TimeAttribute identifies the name of the timing attribute.</li>
-  <li>use a monotonically increasing clock, as defined in <a href="#mono-clock">Section 5.3 Monotonic Clock</a>.</li>
-  <li>be measured in milliseconds since midnight of January 1, 1970 (UTC), as
-  defined in <a href="#terminology">Section 3 Terminology</a>.</li>
+  <li>suivre la convention de nommage : [vendorPrefix]TimeAttribute, où [vendorPrefix] identifie
+  le nom du fournisseur et TimeAttribute identifie le nom de l'attribut de mesure de durée.</li>
+  <li>utiliser une horloge monotone croissante, tel que défini dans <a href="#mono-clock">Section 5.3 Horloge Monotone</a>.</li>
+  <li>être mesuré en millisecondes depuis minuit le 1er janvier 1970 (UTC), tel que
+  défini dans <a href="#terminology">Section 3 Terminologie</a>.</li>
   </ul>
 </li>
-<li>If the extension is a new navigation attribute, it must follow the naming
-  convention: [vendorPrefix]NavigationAttribute, where [vendorPrefix] identifies
-  the vendor name and NavigationAttribute identifies the name of the navigation attribute.</li>
+<li>Si l'extension est un nouvel attribut de navigation, il doit suivre la convention de
+  nommage: [vendorPrefix]NavigationAttribute, où [vendorPrefix] identifie
+  le nom du fournisseur et NavigationAttribute identifie le nom de l'attribut de navigation.</li>
 
 </ul>
 
-<h2 id="privacy"><span class="secno">6 </span>Privacy</h2>
-<p>This section is non-normative.</p>
+<h2 id="privacy"><span class="secno">6 </span>Données privées</h2>
+<p>Cette section n'est pas normative.</p>
 
-<h3 id="info_disclosure"><span class="secno">6.1 </span>Information disclosure</h3>
+<h3 id="info_disclosure"><span class="secno">6.1 </span>Divulgation d'informations</h3>
 <p>There is the potential for disclosing an end-user's browsing and activity history by using
 carefully crafted timing attacks. For instance, the unloading time reveals how long the previous
 page takes to execute its unload handler, which could be used to infer the user's login status.
