@@ -96,9 +96,9 @@ de ce document, qui peut inclure quelques corrections normatives.</p>
 
 <h2 class="no-num no-toc" id="abstract">Résumé</h2>
 
-<p>Cette spécification définit une interface pour les applications Web afin
+<p>Cette spécification définit une interface pour les applications Web permettant
   d'accéder à des informations de mesure de durée en lien avec la navigation
-  et les éléments. </p>
+  et les éléments.</p>
 
 <h2 class="no-num no-toc" id="status-of-this-document">Statut de ce
 document</h2>
@@ -266,8 +266,8 @@ conformité</h2>
 de même que toutes les sections explicitement marquées comme non-normatives.
 Tout le reste dans cette spécification est normatif. </p>
 
-<p>Les mots-clés « DOI(VEN)T », « NE DOI(VEN)T PAS », « REQUIS », « DEVRAIT »,
-« NE DEVRAIT PAS », « RECOMMANDÉ », « PEUT » et « OPTIONNEL » dans les parties
+<p>Les mots-clés « DOI(VEN)T », « NE DOI(VEN)T PAS », « REQUIS », « DEVRAI(EN)T »,
+« NE DEVRAI(EN)T PAS », « RECOMMANDÉ », « PEUT » et « OPTIONNEL » dans les parties
 normatives de ce document doivent s'interpréter comme décrit dans le
 document <a href="#rfc2119">RFC 2119</a>. Pour des raisons de lisibilité, ces
 mots n'apparaissent pas intégralement en lettres majuscules dans cette spécification.</p>
@@ -439,7 +439,6 @@ cet attribut doit retourner la même valeur que <a href="#dom-performancetiming-
 <div class="example">
 <p>Cette section n'est pas normative.</p>
 <p>Vérifier et récupérer le contenu du
-<p>Checking and retrieving contents from the
 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13">cache HTTP</a> [<a href='#rfc2616'>RFC 2616</a>]
 fait partie du <a href="http://www.w3.org/TR/html5/infrastructure.html#fetching-resources">
 processus de chargement</a>. Ce processus est couvert par les attributs
@@ -560,12 +559,12 @@ de préparation du document courant</a> à
 
 <p>Cet attribut doit retourner l'heure immédiatement avant que l'agent utilisateur
 n'émette <a
-href="http://www.w3.org/TR/html5/syntax.html#the-end">l'évènement DOMContentLoaded</a> sur le <a href="http://www.w3.org/TR/html5/dom.html#document"><code>Document</code></a>.</p>
+href="http://www.w3.org/TR/html5/syntax.html#the-end">l'événement DOMContentLoaded</a> sur le <a href="http://www.w3.org/TR/html5/dom.html#document"><code>Document</code></a>.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-domcontenteventend">domContentLoadedEventEnd</dfn></code></h4>
 
 <p>Cet attribut doit retourner l'heure immédiatement après que l'<a
-href="http://www.w3.org/TR/html5/syntax.html#the-end">évènement DOMContentLoaded</a>
+href="http://www.w3.org/TR/html5/syntax.html#the-end">événement DOMContentLoaded</a>
 du document a pris fin.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-domcomplete">domComplete</dfn></code></h4>
@@ -588,15 +587,15 @@ correspondant.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-loadstart">loadEventStart</dfn></code></h4>
 
-<p>Cet attribut doit retourner l'heure immédiatement avant que l'évènement
+<p>Cet attribut doit retourner l'heure immédiatement avant que l'événement
 load du document courant a été émis. Il doit retourner zéro tant que
-l'évènement load n'a pas encore été émis.</p>
+l'événement load n'a pas encore été émis.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-loadend">loadEventEnd</dfn></code></h4>
 
-<p>Cet attribut doit retourner l'heure lorsque l'évènement
+<p>Cet attribut doit retourner l'heure lorsque l'événement
 load du document courant est terminé. Il doit retourner zéro tant que
-l'évènement load n'a pas été émis ou n'est pas terminé.</p>
+l'événement load n'a pas été émis ou n'est pas terminé.</p>
 
 <h3 id="sec-navigation-info-interface"><span class="secno">4.3 </span>L'interface
 <code><a href="#performancenavigation">PerformanceNavigation</a></code></h3>
@@ -710,7 +709,7 @@ window.performance.navigation sont remplacés par ces instances.</p>
 <div class="example">
 <div class="exampleHeader">Illustration</div>
 <p>Cette section n'est pas normative.</p>
-<p>Le graphe suivant illustrate les attributs de mesure de durée définis par l'interface
+<p>Le graphe suivant illustre les attributs de mesure de durée définis par l'interface
 <a href="#performancetiming"><code>PerformanceTiming</code></a> et l'interface
 <a href="#performancenavigation"><code>PerformanceNavigation</code></a>, respectivement
 avec ou sans redirection. Les attributs soulignés peuvent ne pas être disponibles
@@ -771,17 +770,17 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     assignez la valeur 0 à <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a> et
     <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>, puis allez à l'étape
     <a href="#step-fetch-start">6</a>. Sinon, enregistrez <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a>
-    comme l'heure précédent immédiatement l'évènement unload.</li>
-  <li>Immédiatement après que l'évènement unload est achevé,
-    enregistrez l'heure actuelle dans <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>.</li>
+    comme l'heure précédent immédiatement l'événement unload.</li>
+  <li>Immédiatement après que l'événement unload est achevé,
+    enregistrer l'heure actuelle dans <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>.</li>
   <li id="step-fetch-start">Si la nouvelle ressource doit être récupérée en utilisant HTTP GET
-    <a href="http://www.w3.org/TR/html5/infrastructure.html#concept-http-equivalent-get">ou un équivalent</a>, enregistrez l'heure actuelle dans
+    <a href="http://www.w3.org/TR/html5/infrastructure.html#concept-http-equivalent-get">ou un équivalent</a>, enregistrer l'heure actuelle dans
     <a href="#dom-performancetiming-fetchstart">fetchStart</a>
     immédiatement avant qu'un agent utilisateur vérifie les <a
     href="http://www.w3.org/TR/html5/browsers.html#relevant-application-cache">
     caches applicatifs pertinents</a>. Sinon, immédiatement avant qu'un agent utilisateur démarre
     <a href="http://www.w3.org/TR/html5/infrastructure.html#fetching-resources">
-    le processus de récupération</a>, enregistrez l'heure actuelle dans <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
+    le processus de récupération</a>, enregistrer l'heure actuelle dans <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
   <li><a href="#dom-performancetiming-domainlookupstart">domainLookupStart</a>, <a
     href="#dom-performancetiming-domainlookupend">domainLookupEnd</a>, <a
     href="#dom-performancetiming-connectstart">connectStart</a> et <a
@@ -800,7 +799,7 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     récupérer la ressource, <a href="#dom-performancetiming-connectstart">connectStart</a> et
     <a href="#dom-performancetiming-connectend">connectEnd</a> ont la même valeur que
     <a href="#dom-performancetiming-domainlookupend">domainLookupEnd</a>.
-    Sinon, enregistrez l'heure dans <a
+    Sinon, enregistrer l'heure dans <a
     href="#dom-performancetiming-connectstart">connectStart</a> immédiatement avant d'initier la connexion au serveur, et sauver l'heure dans
     <a href="#dom-performancetiming-connectend">connectEnd</a> immédiatement
     après que le connexion au serveur ou au proxy est établie. Un agent utilisateur peut nécessiter plusieurs essais avant cet instant. Si une connexion ne peut pas être établie, annuler la suite des étapes. </li>
@@ -822,13 +821,13 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     href="#dom-performancetiming-responseend">responseEnd</a> immédiatement après avoir reçu le
     dernier octet de la réponse.
     <p>Retourner à l'étape <a href="#step-connect-start">11</a> si l'agent utilisateur
-    échoue à envoyer la requête ou à recevoir la réponse en entier, et nécessite de re-ouvrir la connexion.</p>
+    échoue à envoyer la requête ou à recevoir la réponse en entier, et nécessite de réouvrir la connexion.</p>
 
     <div class="example">
     <div class="exampleHeader">Exemple</div>
     <p>Lorsque la <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1">connexion
     persistante</a> [<a href='#rfc2616'>RFC 2616</a>] est activée, un agent utilisateur peut en premier lieu essayer de réutiliser une connection ouverte pour envoyer la requête alors que la connexion peut être <a
-    href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">fermée de manière asynchrone</a>. Dans un tel cas, connectStart, connectEnd et requestStart devraient représenter des informations de mesure de durée collectées sur la connexion ré-ouverte. </p>
+    href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">fermée de manière asynchrone</a>. Dans un tel cas, connectStart, connectEnd et requestStart devraient représenter des informations de mesure de durée collectées sur la connexion réouverte. </p>
     </div>
   </li>
   <li>Si la récupération de la ressource mène à une redirection HTTP
@@ -837,26 +836,26 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     <ol style="list-style-type:lower-alpha;">
       <li>si le document courant et le document vers lequel la redirection est effectuée ne sont pas de la
         même <a href="http://tools.ietf.org/html/rfc6454">origine</a>,
-        fixer la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
+        fixez la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
         <a href="#dom-performancetiming-unloadeventstart">unloadEventStart</a>,
         <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a> et
         <a href="#dom-performancenavigation-redirectcount">redirectCount</a> à 0. Puis
-        retourner à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
+        retournez à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
       <li>s'il y a des redirections précédentes impliquant des documents qui ne sont pas de la
         même <a href="http://tools.ietf.org/html/rfc6454">origine</a>,
-        fixer la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
+        fixez la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
         <a href="#dom-performancetiming-unloadeventstart">unloadEventStart</a>,
         <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a> et
         <a href="#dom-performancenavigation-redirectcount">redirectCount</a> à 0. Puis
-        retourner à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
-      <li>Incrémenter <a href="#dom-performancenavigation-redirectcount">redirectCount</a> de 1.</li>
+        retournez à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
+      <li>Incrémentez <a href="#dom-performancenavigation-redirectcount">redirectCount</a> de 1.</li>
       <li>Si la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a> est 0,
         lui associer la valeur de <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
-      <li>Donner à <a href="#dom-performancetiming-redirectend">redirectEnd</a> la valeur de
+      <li>Donnez à <a href="#dom-performancetiming-redirectend">redirectEnd</a> la valeur de
         <a href="#dom-performancetiming-responseend">responseEnd</a>.</li>
-      <li>Fixer tous les attributs de window.performance.timing à 0 sauf
+      <li>Fixez tous les attributs de window.performance.timing à 0 sauf
         <a href="#dom-performancetiming-navigationstart">navigationStart</a>,
         <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
@@ -873,20 +872,20 @@ de préparation du document courant</a> à "loading".</li>
     href="http://www.w3.org/TR/html5/dom.html#current-document-readiness">état
 de préparation du document courant</a> à "interactive".</li>
   <li>Enregistrer l'heure dans <a
-    href="#dom-performancetiming-domcontenteventstart">domContentLoadedEventStart</a> immédiatement avant que l'agent utilisateur ne lance <a href="http://www.w3.org/TR/html5/syntax.html#the-end">l'évènement
+    href="#dom-performancetiming-domcontenteventstart">domContentLoadedEventStart</a> immédiatement avant que l'agent utilisateur ne lance <a href="http://www.w3.org/TR/html5/syntax.html#the-end">l'événement
     DOMContentLoaded</a> sur le document.</li>
   <li>Enregistrer l'heure dans <a
     href="#dom-performancetiming-domcontenteventend">domContentLoadedEventEnd</a> immédiatement après l'achèvement de
-    <a href="http://www.w3.org/TR/html5/syntax.html#the-end">l'évènement
+    <a href="http://www.w3.org/TR/html5/syntax.html#the-end">l'événement
     DOMContentLoaded</a>.</li>
   <li>Enregistrer l'heure dans <a href="#dom-performancetiming-domcomplete">domComplete</a>
     immédiatement avant que l'agent utilisateur ne fixe l'<a
     href="http://www.w3.org/TR/html5/dom.html#current-document-readiness">état
 de préparation du document courant</a> à "complete".</li>
   <li>Enregistrer l'heure dans <a href="#dom-performancetiming-loadstart">loadEventStart</a>
-    avant que l'agent utilisateur ne lance l'évènement load.</li>
+    avant que l'agent utilisateur ne lance l'événement load.</li>
   <li>Enregistrer l'heure dans <a href="#dom-performancetiming-loadend">loadEventEnd</a>
-    immédiatement après que l'agent utilisateur a terminé l'évènement load.</li>
+    immédiatement après que l'agent utilisateur a terminé l'événement load.</li>
 </ol>
 
 <!--
@@ -909,13 +908,13 @@ window.performance.timing et window.performance.navigation.
 <p>La valeur des attributs de mesure de durée doit augmenter de manière monotone afin de garantir que les attributs de mesure de durée ne sont pas faussés
 par des ajustements à l'horloge du système pendant la navigation. La différence entre n'importe lesquels de deux attributs de mesure de durée enregistrés chronologiquement
 ne doit jamais être négative. Pour toutes les navigations, y compris les navigations au sein d'un même document,
-l'agent utilisateur doit enregistrer l'horloge du système au début de la navugation du document racine,
+l'agent utilisateur doit enregistrer l'horloge du système au début de la navigation du document racine,
 et définir les attributs de mesure de durée subséquents selon les termes d'une horloge monotone mesurant la durée écoulée
 depuis le début de la navigation.
 </p>
 
 <h3 id="vendor-prefixes"><span class="secno">5.4 </span>Préfixes de fournisseurs</h3>
-<p>Les extensions d'agent utilisateur propriétaires, spécifiques au fournisseurs, sont découragées. Si de telles extensions sont nécessaires,
+<p>Les extensions d'agent utilisateur propriétaires, spécifiques au fournisseur, sont découragées. Si de telles extensions sont nécessaires,
 par exemple pour des besoins expérimentaux, les fournisseurs doivent utiliser les mécanismes d'extension suivants :</p>
 
 <ul>
@@ -959,9 +958,9 @@ En hébergement mutualisé, une tierce partie non approuvée a la possibilité
 d'héberger un serveur HTTP à la même adresse IP, mais sur un autre port.</p>
 
 <h3 id="cross-directory"><span class="secno">6.2 </span>Accès inter-dossiers</h3>
-<p>Different pages qui partagent un nom d'hôte, par exemple des contenus de différents auteurs hébergés
+<p>Differentes pages qui partagent un nom d'hôte, par exemple des contenus de différents auteurs hébergés
 sur des sites avec du contenu généré par l'utilisateur, sont considérées comme ayant la même origine,
-parce qu'il n'y a aucune fonctionnalité pour restreindre l'accès par chemin. Naviguer entre ces pages permet à une page donnée d'accéder aux informations de mesure de durée de la précédente, comme par exemple la mesure de durée de redirection et de l'évènement unload.</p>
+parce qu'il n'y a aucune fonctionnalité pour restreindre l'accès par chemin. Naviguer entre ces pages permet à une page donnée d'accéder aux informations de mesure de durée de la précédente, comme par exemple la mesure de durée de redirection et de l'événement unload.</p>
 
 <h2 id="security"><span class="secno">7 </span>Sécurité</h2>
 <p>Cette section n'est pas normative.</p>
