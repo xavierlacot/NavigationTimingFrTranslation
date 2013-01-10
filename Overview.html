@@ -45,9 +45,10 @@
     <ul>
       <li><b>Adresse</b> : <a href="http://www.w3.org/TR/navigation-timing/">http://www.w3.org/TR/navigation-timing/</a></li>
       <li><b>Traducteur</b> : <a href="http://www.lacot.org/">Xavier Lacot</a> - &lt;xavier [at] lacot.org&gt;</li>
+      <li><b>Relecteur</b> : Benjamin Clay - &lt;bclay [at] jolicode.com&gt;</li>
       <li><b>Date de début de traduction</b> : 23 Décembre 2012</li>
-      <li><b>Date de fin de traduction</b> : 27 Décembre 2012</li>
-      <li><b>Derni&egrave;re mise &agrave; jour</b> : 27 Décembre 2012</li>
+      <li><b>Date de fin de traduction</b> : 10 Janvier 2013</li>
+      <li><b>Derni&egrave;re mise &agrave; jour</b> : 10 Janvier 2013</li>
     </ul>
   </div>
 
@@ -151,7 +152,7 @@ du Web.</p>
   <li><a href="#conformance-requirements"><span class="secno">2
     </span>Exigences de conformité</a></li>
   <li><a href="#terminology"><span class="secno">3 </span>Terminologie</a></li>
-  <li><a href="#sec-navigation-timing"><span class="secno">4 </span>Mesure de durées de Navigation</a>
+  <li><a href="#sec-navigation-timing"><span class="secno">4 </span>Mesure des durées de Navigation</a>
     <ol class="toc">
       <li><a href="#sec-navigation-timing-introduction"><span class="secno">4.1 </span>Introduction</a></li>
       <li><a href="#sec-navigation-timing-interface"><span class="secno">4.2 </span>L'interface <code>PerformanceTiming</code></a></li>
@@ -306,11 +307,11 @@ du terme officiel ECMAScript pour faire référence à
 l'<a href="#ECMA262">ECMA-262</a>.</p>
 
 <p>Tout au long de ce travail, le temps est mesuré en millisecondes
-depuis minuit du 1<sup>er</sup> Janvier 1970 (UTC). Veuillez noter que la spécifiation de Mesure de Durée de Navigation 2 <a href='#NavigationTiming2'>[Navigation Timing 2]</a>
+depuis minuit du 1<sup>er</sup> Janvier 1970 (UTC). Veuillez noter que la spécifiation de Mesure des durées de Navigation 2 <a href='#NavigationTiming2'>[Navigation Timing 2]</a>
 donne accès aux informations de mesure de durée liées à la navigation en proposant plutôt
-une résolution infèrieure à la milliseconde.</p>
+une résolution inférieure à la milliseconde.</p>
 
-<h2 id="sec-navigation-timing"><span class="secno">4 </span>Mesure de durées de Navigation</h2>
+<h2 id="sec-navigation-timing"><span class="secno">4 </span>Mesure des durées de Navigation</h2>
 
 <h3 id="sec-navigation-timing-introduction"><span class="secno">4.1 </span>Introduction</h3>
 
@@ -349,8 +350,8 @@ interfaces afin de collecter, stocker et analyser les informations fournies. </p
 <h4>Attribut <code><dfn id="dom-performancetiming-navigationstart">navigationStart</dfn></code></h4>
 
 <p>Cet attribut doit retourner l'heure immédiatement après que l'agent
-utilisateur a fini d'<a
-href="http://www.w3.org/TR/html5/browsers.html#prompt-to-unload-a-document">inviter
+utilisateur a fini de
+<a href="http://www.w3.org/TR/html5/browsers.html#prompt-to-unload-a-document">demander
 à décharger</a> le document précédent. S'il n'y a pas de document précédent, cet
 attribut doit retourner la même valeur que <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</p>
 
@@ -420,7 +421,7 @@ l'agent utilisateur commence à
 <h4>Attribut <code><dfn id="dom-performancetiming-domainlookupstart">domainLookupStart</dfn></code></h4>
 
 <p>Cet attribut doit retourner l'heure immédiatement avant que l'agent utilisateur
-commence la recherche du nom de domaine pour le document courant.
+ne commence la recherche du nom de domaine pour le document courant.
 Si une <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1">connexion persistante</a> [<a href='#rfc2616'>RFC 2616</a>] est utilisée, ou si le document
 courant est extrait de <a href="http://www.w3.org/TR/html5/browsers.html#relevant-application-cache">caches
 applicatifs pertinents</a> ou de ressources locales,
@@ -460,7 +461,7 @@ commence et termine la récupération de données liées au domaine depuis le ca
 <h4>Attribut <code><dfn id="dom-performancetiming-connectstart">connectStart</dfn></code></h4>
 
 <p>Cet attribut doit retourner l'heure immédiatement avant que l'agent utilisateur
-commence à établir la connexion au serveur pour récupérer le document.
+ne commence à établir la connexion au serveur pour récupérer le document.
 Si une <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1">connexion
 persistante</a> [<a href='#rfc2616'>RFC 2616</a>] est utilisée, ou si le document est extrait de <a
 href="http://www.w3.org/TR/html5/browsers.html#relevant-application-cache">caches
@@ -495,7 +496,7 @@ tels que le dialogue SSL et l'authentification SOCKS.
 attribut doivent le fixer à undefined. Lorsque cet attribut est disponible, si le
 <a href="http://www.w3.org/TR/html5/infrastructure.html#url-scheme">schéma</a> de la page
 courante est <a href="http://tools.ietf.org/html/rfc2817">HTTPS</a>, cet
-attribut doit retourner l'heure immédiatement avant que l'agent utilisateur commence
+attribut doit retourner l'heure immédiatement avant que l'agent utilisateur ne commence
 le processus de dialogue pour sécuriser la connexion courante. Si cet attribut est
 disponible mais que HTTPS n'est pas utilisé, cet attribut doit retourner zéro.
 </p>
@@ -517,7 +518,7 @@ correspondantes pour la nouvelle requête.</p>
 d'une requête, par exemple requestEnd.
 <ul>
 <li>La fin de l'envoi de la requête par l'agent utilisateur n'indique pas toujours
-la date correspondate de complétion sur le transport réseau, ce qui serait l'objectif
+la date correspondante de complétion sur le transport réseau, ce qui serait l'objectif
 principal d'un tel attribut.</li>
 <li>Certains agents utilisateur ne peuvent que difficilement déterminer la
 durée réelle d'achèvement de l'envoi de la requête, en raison de
@@ -581,14 +582,13 @@ de préparation du document courant</a> change plusieurs fois vers le même éta
 <a href="#dom-performancetiming-domcontenteventstart">domContentLoadedEventStart</a>,
 <a href="#dom-performancetiming-domcontenteventend">domContentLoadedEventEnd</a> et
 <a href="#dom-performancetiming-domcomplete">domComplete</a> doivent retourner l'heure de la première
-occurrence du changement de l'
-<a href="http://www.w3.org/TR/html5/dom.html#current-document-readiness">état de préparation du document</a>
+occurrence du changement de l'<a href="http://www.w3.org/TR/html5/dom.html#current-document-readiness">état de préparation du document</a>
 correspondant.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-loadstart">loadEventStart</dfn></code></h4>
 
 <p>Cet attribut doit retourner l'heure immédiatement avant que l'événement
-load du document courant a été émis. Il doit retourner zéro tant que
+load du document courant ne soit émis. Il doit retourner zéro tant que
 l'événement load n'a pas encore été émis.</p>
 
 <h4>Attribut <code><dfn id="dom-performancetiming-loadend">loadEventEnd</dfn></code></h4>
@@ -617,7 +617,7 @@ href="#dom-performancenavigation-type">type de navigation</a> suivantes. </p>
 <dl>
   <dt><dfn id="dom-performancenavigation-typenavigate">TYPE_NAVIGATE</dfn></dt>
     <dd><p>La navigation a commencé en cliquant sur un lien, ou en entrant l'URL dans la barre
-    d'addresses de l'agent utilisateur, ou en soumettant un formulaire, ou elle a été initiée par une opération scriptée autre que
+    d'adresses de l'agent utilisateur, ou en soumettant un formulaire, ou elle a été initiée par une opération scriptée autre que
     celles utilisées par <a href="#dom-performancenavigation-typenavigate">TYPE_RELOAD</a>
     et <a href="#dom-performancenavigation-typebackforward">TYPE_BACK_FORWARD</a> comme indiqué ci-dessous.</p></dd>
   <dt><dfn id="dom-performancenavigation-typereload">TYPE_RELOAD</dfn></dt>
@@ -674,12 +674,12 @@ un espace de stockage pour les attributs liés à la performance.
 <p>
 	L'attribut <code>timing</code>
 	représente les informations de mesure de temps liées aux contextes de navigation
-depuis la dernière action de navigation qui ne soit pas une redirection. Cet attribut est définit par l'interface <a href="#sec-navigation-timing-interface">PerformanceTiming</a>.
+depuis la dernière action de navigation qui ne soit pas une redirection. Cet attribut est défini par l'interface <a href="#sec-navigation-timing-interface">PerformanceTiming</a>.
 </p>
 
 <h4 id="performance-navigation-attribute">Attribut <code>navigation</code></h4>
 <p>
-	L'attribut <code>navigation</code> est définit par l'interface <a href="#performancenavigation"><code>PerformanceNavigation</code></a>.
+	L'attribut <code>navigation</code> est défini par l'interface <a href="#performancenavigation"><code>PerformanceNavigation</code></a>.
 <p>
 
 <h2 id="process"><span class="secno">5 </span>Traitement</h2>
@@ -721,7 +721,7 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
 
 <ol>
   <li>Si la <a href="http://www.w3.org/TR/html5/browsers.html#navigate">navigation</a>
-    est annulée pour une quelconque des raisons suivantes, annulez
+    est annulée pour une quelconque des raisons suivantes, annuler
     ces étapes sans modifier les attributs de window.performance.timing
     et window.performance.navigation.
     <ol style="list-style-type:lower-alpha;">
@@ -746,9 +746,9 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     href="http://www.w3.org/TR/html5/browsers.html#prompt-to-unload-a-document">demandé
     à décharger</a> le <a
     href="http://www.w3.org/TR/html5/dom.html#document">document</a> précédent,
-    sauvez l'heure courante en tant que <a
+    sauver l'heure courante en tant que <a
     href="#dom-performancetiming-navigationstart">navigationStart</a>.</li>
-  <li> Sauvez le type de navigation courant dans <a href="#dom-performancenavigation-type">window.performance.navigation.type</a>
+  <li> Sauver le type de navigation courant dans <a href="#dom-performancenavigation-type">window.performance.navigation.type</a>
     si cela n'a pas été affecté :
     <ol style="list-style-type:lower-alpha;">
     <li>Si la navigation a été démarrée par un clic sur un lien, ou en saisissant l'URL dans la barre d'adresse
@@ -761,15 +761,15 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
         ou d'autres actions équivalentes, le type de navigation est
         <a href="#dom-performancenavigation-typereload">TYPE_RELOAD</a>.</li>
     <li>Si la navigation a été démarrée en tant que résultat d'une
-        <a href="http://www.w3.org/TR/html5/browsers.html#traverse-the-history">traversée d'hsitorique</a>,
+        <a href="http://www.w3.org/TR/html5/browsers.html#traverse-the-history">traversée d'historique</a>,
         le type de navigation est <a href="#dom-performancenavigation-typebackforward">TYPE_BACK_FORWARD</a>.</li>
     <li>Sinon, le type de navigation est <a href="#dom-performancenavigation-typenavigate">TYPE_RESERVED</a>.</li>
     </ol>
   </li>
   <li>Si le document courant et le document précédent sont d'<a href="http://tools.ietf.org/html/rfc6454">origines</a> différentes,
-    assignez la valeur 0 à <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a> et
-    <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>, puis allez à l'étape
-    <a href="#step-fetch-start">6</a>. Sinon, enregistrez <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a>
+    assigner la valeur 0 à <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a> et
+    <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>, puis aller à l'étape
+    <a href="#step-fetch-start">6</a>. Sinon, enregistrer <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a>
     comme l'heure précédent immédiatement l'événement unload.</li>
   <li>Immédiatement après que l'événement unload est achevé,
     enregistrer l'heure actuelle dans <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a>.</li>
@@ -781,23 +781,23 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     caches applicatifs pertinents</a>. Sinon, immédiatement avant qu'un agent utilisateur démarre
     <a href="http://www.w3.org/TR/html5/infrastructure.html#fetching-resources">
     le processus de récupération</a>, enregistrer l'heure actuelle dans <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
-  <li><a href="#dom-performancetiming-domainlookupstart">domainLookupStart</a>, <a
+  <li>Associer à <a href="#dom-performancetiming-domainlookupstart">domainLookupStart</a>, <a
     href="#dom-performancetiming-domainlookupend">domainLookupEnd</a>, <a
     href="#dom-performancetiming-connectstart">connectStart</a> et <a
-    href="#dom-performancetiming-connectend">connectEnd</a> ont la même valeur que <a
+    href="#dom-performancetiming-connectend">connectEnd</a> la même valeur que <a
     href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
   <li>Si la ressource est récupérée depuis les <a
     href="http://www.w3.org/TR/html5/browsers.html#relevant-application-cache">caches applicatifs pertinents</a> ou des ressources locales, incluant le
     <a href="http://www.ietf.org/rfc/rfc2616.txt">cache HTTP</a>,
     aller à l'étape <a href="#step-request-start">13</a>.</li>
   <li>Si aucune recherche de nom de domaine n'est nécessaire, aller à l'étape <a
-    href="#step-connect-start">11</a>. Sinon, immediatement avant qu'un agent utilisateur commence la recherche de nom de domaine, enregistrer l'heure dans
+    href="#step-connect-start">11</a>. Sinon, immédiatement avant qu'un agent utilisateur ne commence la recherche de nom de domaine, enregistrer l'heure dans
     <a href="#dom-performancetiming-domainlookupstart">domainLookupStart</a>. </li>
   <li>Enregistrer l'heure dans <a href="#dom-performancetiming-domainlookupend">domainLookupEnd</a>
-    immediatement après que la recherche de nom de domaine est effectuée avec succès. Un agent utilisateur peut nécessiter plusieurs essais avant que ce soit le cas. Si la recherche de nom de domaine échoue, annuler la suite des étapes. </li>
+    immédiatement après que la recherche de nom de domaine est effectuée avec succès. Un agent utilisateur peut nécessiter plusieurs essais avant que ce soit le cas. Si la recherche de nom de domaine échoue, annuler la suite des étapes. </li>
   <li id="step-connect-start">Si une connexion de transport persistante est utilisée pour
-    récupérer la ressource, <a href="#dom-performancetiming-connectstart">connectStart</a> et
-    <a href="#dom-performancetiming-connectend">connectEnd</a> ont la même valeur que
+    récupérer la ressource, associer à <a href="#dom-performancetiming-connectstart">connectStart</a> et
+    <a href="#dom-performancetiming-connectend">connectEnd</a> la même valeur que
     <a href="#dom-performancetiming-domainlookupend">domainLookupEnd</a>.
     Sinon, enregistrer l'heure dans <a
     href="#dom-performancetiming-connectstart">connectStart</a> immédiatement avant d'initier la connexion au serveur, et sauver l'heure dans
@@ -815,7 +815,7 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
   <li id="step-request-start">Immédiatement avant que l'agent utilisateur commence à envoyer la requête pour le document, enregistrer l'heure actuelle dans <a
     href="#dom-performancetiming-requeststart">requestStart</a>.</li>
   <li id="step-response-start">Enregistrer l'heure dans <a href="#dom-performancetiming-responsestart">
-    responseStart</a> immédiatement après que l'agent utilisateur reçoit le premier octet
+    responseStart</a> immédiatement après que l'agent utilisateur a reçu le premier octet
     de la réponse.</li>
   <li id="step-response-end">Enregistrer l'heure dans <a
     href="#dom-performancetiming-responseend">responseEnd</a> immédiatement après avoir reçu le
@@ -826,7 +826,7 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     <div class="example">
     <div class="exampleHeader">Exemple</div>
     <p>Lorsque la <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1">connexion
-    persistante</a> [<a href='#rfc2616'>RFC 2616</a>] est activée, un agent utilisateur peut en premier lieu essayer de réutiliser une connection ouverte pour envoyer la requête alors que la connexion peut être <a
+    persistante</a> [<a href='#rfc2616'>RFC 2616</a>] est activée, un agent utilisateur peut en premier lieu essayer de réutiliser une connexion ouverte pour envoyer la requête alors que la connexion peut être <a
     href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">fermée de manière asynchrone</a>. Dans un tel cas, connectStart, connectEnd et requestStart devraient représenter des informations de mesure de durée collectées sur la connexion réouverte. </p>
     </div>
   </li>
@@ -836,26 +836,26 @@ ce qui permet des intervalles non-normatifs entre les mesures de durée.</p>
     <ol style="list-style-type:lower-alpha;">
       <li>si le document courant et le document vers lequel la redirection est effectuée ne sont pas de la
         même <a href="http://tools.ietf.org/html/rfc6454">origine</a>,
-        fixez la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
+        fixer la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
         <a href="#dom-performancetiming-unloadeventstart">unloadEventStart</a>,
         <a href="#dom-performancetiming-unloadeventend">unloadEventEnd</a> et
         <a href="#dom-performancenavigation-redirectcount">redirectCount</a> à 0. Puis
-        retournez à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
+        retourner à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
       <li>s'il y a des redirections précédentes impliquant des documents qui ne sont pas de la
         même <a href="http://tools.ietf.org/html/rfc6454">origine</a>,
-        fixez la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
+        fixer la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
         <a href="#dom-performancetiming-unloadeventstart">unloadEventStart</a>,
         <a href="#dom-performancetiming-unloadeventend">unloadEventStart</a> et
         <a href="#dom-performancenavigation-redirectcount">redirectCount</a> à 0. Puis
-        retournez à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
-      <li>Incrémentez <a href="#dom-performancenavigation-redirectcount">redirectCount</a> de 1.</li>
+        retourner à l'étape <a href="#step-fetch-start">6</a> avec la nouvelle ressource.</li>
+      <li>Incrémenter <a href="#dom-performancenavigation-redirectcount">redirectCount</a> de 1.</li>
       <li>Si la valeur de <a href="#dom-performancetiming-redirectstart">redirectStart</a> est 0,
         lui associer la valeur de <a href="#dom-performancetiming-fetchstart">fetchStart</a>.</li>
-      <li>Donnez à <a href="#dom-performancetiming-redirectend">redirectEnd</a> la valeur de
+      <li>Donner à <a href="#dom-performancetiming-redirectend">redirectEnd</a> la valeur de
         <a href="#dom-performancetiming-responseend">responseEnd</a>.</li>
-      <li>Fixez tous les attributs de window.performance.timing à 0 sauf
+      <li>Fixer tous les attributs de window.performance.timing à 0 sauf
         <a href="#dom-performancetiming-navigationstart">navigationStart</a>,
         <a href="#dom-performancetiming-redirectstart">redirectStart</a>,
         <a href="#dom-performancetiming-redirectend">redirectEnd</a>,
@@ -906,7 +906,7 @@ window.performance.timing et window.performance.navigation.
 
 <h3 id="mono-clock"><span class="secno">5.3 </span>Horloge Monotone</h3>
 <p>La valeur des attributs de mesure de durée doit augmenter de manière monotone afin de garantir que les attributs de mesure de durée ne sont pas faussés
-par des ajustements à l'horloge du système pendant la navigation. La différence entre n'importe lesquels de deux attributs de mesure de durée enregistrés chronologiquement
+par des ajustements apportés à l'horloge du système pendant la navigation. La différence entre n'importe lesquels de deux attributs de mesure de durée enregistrés chronologiquement
 ne doit jamais être négative. Pour toutes les navigations, y compris les navigations au sein d'un même document,
 l'agent utilisateur doit enregistrer l'horloge du système au début de la navigation du document racine,
 et définir les attributs de mesure de durée subséquents selon les termes d'une horloge monotone mesurant la durée écoulée
@@ -935,7 +935,7 @@ par exemple pour des besoins expérimentaux, les fournisseurs doivent utiliser l
   </ul>
 </li>
 <li>Si l'extension est un nouvel attribut de navigation, il doit suivre la convention de
-  nommage: [vendorPrefix]NavigationAttribute, où [vendorPrefix] identifie
+  nommage : [vendorPrefix]NavigationAttribute, où [vendorPrefix] identifie
   le nom du fournisseur et NavigationAttribute identifie le nom de l'attribut de navigation.</li>
 
 </ul>
@@ -948,7 +948,7 @@ par exemple pour des besoins expérimentaux, les fournisseurs doivent utiliser l
 en utilisant des attaques temporelles conçues avec soin. Par exemple, le temps de déchargement révèle
 combien de temps il est nécessaire à la page précédente pour exécuter son gestionnaire de déchargement,
 ce qui pourrait être utilisée pour déduire l'état de connexion de l'utilisateur.
-Ces attaques ont été atténués par l'application de la règle de même
+Ces attaques ont été atténuées par l'application de la règle de même
 <a href="http://tools.ietf.org/html/rfc6454">origine</a> lorsqu'on accède
 à des informations de mesure de durée impliquant la dernière navigation.</p>
 
@@ -958,9 +958,9 @@ En hébergement mutualisé, une tierce partie non approuvée a la possibilité
 d'héberger un serveur HTTP à la même adresse IP, mais sur un autre port.</p>
 
 <h3 id="cross-directory"><span class="secno">6.2 </span>Accès inter-dossiers</h3>
-<p>Differentes pages qui partagent un nom d'hôte, par exemple des contenus de différents auteurs hébergés
+<p>Différentes pages qui partagent un nom d'hôte, par exemple des contenus de différents auteurs hébergés
 sur des sites avec du contenu généré par l'utilisateur, sont considérées comme ayant la même origine,
-parce qu'il n'y a aucune fonctionnalité pour restreindre l'accès par chemin. Naviguer entre ces pages permet à une page donnée d'accéder aux informations de mesure de durée de la précédente, comme par exemple la mesure de durée de redirection et de l'événement unload.</p>
+parce qu'il n'y a aucune fonctionnalité pour restreindre l'accès par chemin. Naviguer entre ces pages permet à une page donnée d'accéder aux informations de mesure de durée de la précédente, comme par exemple la mesure de durées concernant les redirections et l'événement unload.</p>
 
 <h2 id="security"><span class="secno">7 </span>Sécurité</h2>
 <p>Cette section n'est pas normative.</p>
@@ -1005,7 +1005,7 @@ qui s'appuient sur l'interface décrite dans ce document pourraient être cassé
 <dt>[<a id="HTML5">HTML5</a>]</dt>
 <dd><cite><a href='http://www.w3.org/TR/html5/'>HTML5</a></cite>, Robin Berjon et al., Éditeurs. World Wide Web Consortium, Décembre 2012. Cette version de HTML5 est disponible par le biais de <a href='http://www.w3.org/TR/html5/'>http://www.w3.org/TR/html5/</a>. Le <a href='http://www.w3.org/html/wg/drafts/html/CR/'>dernier document de travail de l'éditeur</a> de HTML5 est disponible à http://www.w3.org/html/wg/drafts/html/CR/.</dd>
    <dt>[<a id="WebIDL">Web IDL</a>]</dt>
-   <dd><cite><a href='http://www.w3.org/TR/2012/CR-WebIDL-20120419/'>Web IDL</a></cite>, Cameron McCormack, Éditeur. World Wide Web Consortium, Avril 2012. Cette version de la spécification Web IDL specification est disponible par le biais de http://www.w3.org/TR/2012/CR-WebIDL-20120419/. La <a href='http://www.w3.org/TR/WebIDL/'>dernière version de Web IDL</a> est disponible à http://www.w3.org/TR/WebIDL/.</dd>
+   <dd><cite><a href='http://www.w3.org/TR/2012/CR-WebIDL-20120419/'>Web IDL</a></cite>, Cameron McCormack, Éditeur. World Wide Web Consortium, Avril 2012. Cette version de la spécification Web IDL est disponible par le biais de http://www.w3.org/TR/2012/CR-WebIDL-20120419/. La <a href='http://www.w3.org/TR/WebIDL/'>dernière version de Web IDL</a> est disponible à http://www.w3.org/TR/WebIDL/.</dd>
 </dl>
 
 <h3 id="informative-references"><span class="secno">8.2 </span>Références Informatives</h3>
